@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Binky Destroyer - Oficjalna strona niszczyciela domowego miru.">
+    <title>Binky Destroyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="https://mateuszkocanda1-droid.github.io/binky-destroyer/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    *, *::before, *::after
+    {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    :root
+    {
+        --cream: #f0e6d2;
+        --cream-dark: #e2d4b7;
+        --purple: #6b4c8a;
+        --purple-dark: #3d2c52;
+        --purple-light: #c4a5d4;
+        --purple-mist: #e8dcef;
+        --text: #2e1f3d;
+        --text-soft: #5a4a6e;
+    }
+    html
+    {
+        scroll-behavior: smooth;
+    }
+    body
+    {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: var(--cream);
+        color: var(--text);
+        line-height: 1.6;
+        font-size: 16px;
+        min-height: 100vh;
+    }
+    h1, h2, h3
+    {
+        font-family: 'DM Serif Display', serif;
+        font-weight: 400;
+        color: var(--purple-dark);
+        line-height: 1.1;
+    }
+    nav
+    {
+        position: sticky;
+        top: 0;
+        background-color: rgba(240, 230, 210, 0.92);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(107, 76, 138, 0.15);
+        z-index: 1000;
+        padding: 10px 32px;
+    }
+    .nav-inner
+    {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+    }
+    .logo
+    {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.4rem;
+        color: var(--purple-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .logo-icon
+    {
+        display: inline-flex;
+        width: 36px;
+        height: 36px;
+        background-color: var(--purple);
+        color: var(--cream);
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem;
+        transform: rotate(-3deg);
+    }
+    .accent-text
+    {
+        font-family: 'Caveat', cursive;
+        color: var(--purple);
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    .nav-links
+    {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+    }
+    .nav-links a
+    {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: var(--text-soft);
+        text-decoration: none;
+        position: relative;
+    }
+    .nav-links a::after
+    {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: var(--purple);
+        transition: width 0.25s ease;
+    }
+    .nav-links
+    {
+        width: 100%;
+    }
+    .nav-links a:hover::after
+    {
+        width: 100%;
+    }
+    .nav-links a:hover
+    {
+        color: var(--purple-dark);
+    }
+    .hero
+    {
+        margin: 0 auto;
+        max-width: 1100px;
+        padding: 80px 32px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .hero h1
+    {
+        font-size: 5rem;
+        line-height: 1;
+        animation: fadeInUp 1.2s ease both;
+    }
+    .hero p
+    {
+        font-size: 1.15rem;
+        color: var(--text-soft);
+        max-width: 520px;
+        animation: fadeInUp 1.2s ease 0.2s both;
+    }
+    section
+    {
+        margin: auto;
+        max-width: 1100px;
+        padding: 64px 32px;
+    }
+    .section-label
+    {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--purple-light);
+        letter-spacing: 0.1em;
+        margin-bottom: 8px;
+    }
+    .section-title
+    {
+        font-size: 2.8rem;
+        margin-bottom: 40px;
+        color: var(--purple-dark);
+    }
+    .about-grid
+    {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 48px;
+        align-items: start;
+    }
+    .photo-emoji
+    {
+        font-size: 6rem;
+        display: block;
+        text-align: center;
+        padding: 32px;
+        background-color: var(--purple-mist);
+        border: 1px solid var(--purple-light);
+        border-radius: 16px;
+    }
+    .photo-label
+    {
+        display: block;
+        text-align: center;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        color: var(--purple-light);
+        margin-top: 8px;
+    }
+    .about-text 
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .about-text p
+    {
+        color: var(--text-soft);
+        line-height: 1.75;
+    }
+    .stats-list
+    {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 8px;
+        background-color: var(--purple-mist);
+        border-radius: 12px;
+        padding: 20px 24px;
+        border: 1px solid var(--cream-dark);
+    }
+    .stats-list li
+    {
+        display: flex;
+        gap: 12px;
+        font-size: 0.92rem;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed var(--cream-dark);
+        align-items: baseline;
+    }
+    .stats-list li:last-child
+    {
+        padding-bottom: 0; 
+        border-bottom: none;
+    }
+    .stat-key
+    {
+        font-weight: 700;
+        color: var(--purple);
+        min-width: 240px;
+        font-size: 0.85rem;
+        font-family: 'Space Mono', monospace;
+    }
+    @media (max-width: 768px) 
+    {
+    .nav-links 
+    {
+        gap: 12px;
+    }
+    .nav-links a 
+    {
+        font-size: 0.8rem;
+    }
+    .logo 
+    {
+        font-size: 1.1rem;
+    }
+    .logo-icon 
+    {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+    .accent-text 
+    {
+        font-size: 1.3rem;
+    }
+    .about-grid 
+    {
+        grid-template-columns: 1fr;
+    }
+    .stat-key 
+    {
+        min-width: 130px;
+    }
+    }
+    .gallery-grid
+    {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .gallery-card
+    {
+        background: var(--purple-mist);
+        border: 1px solid var(--purple-light);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .gallery-card:hover
+    {
+        transform: translateY(-6px);
+    }
+    .gallery-img
+    {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background-color: var(--cream-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+    }
+    .gallery-caption
+    {
+        padding: 14px 16px;
+        font-size: 0.85rem;
+        color: var(--text-soft);
+    }
+    .gallery-caption strong
+    {
+        display: block;
+        font-weight: 700;
+        color: var(--purple-dark);
+        margin-bottom: 4px;
+    }
+    .destruction-list
+    {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .destruction-item
+    {
+        display: grid;
+        grid-template-columns: 48px 1fr auto;
+        align-items: center;
+        gap: 20px;
+        background: white;
+        border-radius: 12px;
+        padding: 18px 24px;
+        border: 1px solid var(--cream-dark);
+        border-left: 4px solid var(--purple);
+        transition: transform 0.2s ease;
+    }
+    .destruction-item:hover
+    {
+        transform: translateX(6px);
+    }
+    .destruction-icon
+    {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    .destruction-name
+    {
+        font-weight: 700;
+        color: var(--purple-dark);
+        margin-bottom: 4px;
+    }
+    .destruction-desc
+    {
+        font-size: 0.85rem;
+        color: var(--text-soft);
+    }
+    .destruction-badge
+    {
+        font-family: 'Space Monpo', monospace;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 20px;
+        font-weight: 700;
+    }
+    .badge-rip
+    {
+        background: #fce8e8;
+        color: #c8392b;
+        border: 1px solid #f5c6c6;
+    }
+    .badge-wip
+    {
+        background: #fff3e0;
+        color: #e65100;
+        border: 1px solid #ffe0b2;
+    }
+    .destruction-icon i
+    {
+        font-size: 1.8rem;
+        color: var(--purple);
+    }
+    @media (max-width: 768px)
+    {
+        .gallery-grid
+        {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    footer
+    {
+        margin-top: 80px;
+        border-top: 1px solid var(--cream-dark);
+        padding: 40px 32px;
+        text-align: center;
+    }
+    .footer-inner
+    {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .footer-name
+    {
+        font-family: 'Space Mono', monospace;
+        font-size: 1.2rem;
+        color: var(--purple);
+        font-weight: 700;
+    }
+    .footer-text
+    {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--text-soft);
+        opacity: 0.6;
+    }
+    @keyframes float
+    {
+        0%, 100% {transform: translateY(0); }
+        50% {transform: translateY(-8px); }
+    }
+    @keyframes fadeInUp
+    {
+        from 
+        {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to 
+        {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .footer-cat
+    {
+        font-size: 2rem;
+        animation: float 3s ease-in-out infinite;
+    }
+</style>
+</head>
+<body>
+    <nav>
+            <div class="nav-inner">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-cat"></i></span>
+                    Binky <span class="accent-text">Destroyer</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">O mnie</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#destruction">Hall of destruction</a></li>
+                </ul>
+            </div>
+    </nav>
+    <header class="hero">
+        <h1>Binky Destroyer</h1>
+        <p>Oficjalna strona niszczyciela domowego miru.</p>
+    </header>
+    <main>
+            <section id="about">
+               <p class="section-label">// dossier </p>
+                <h2 class="section-title">poznaj Binky</h2>
+
+                <div class="about-grid">
+                    <div class="photo-card">
+                        <img src="https://mateuszkocanda1-droid.github.io/binky-destroyer/binku-2.jpg" alt="Binky" style="width:100%; border-radius:12px;">
+                        <span class="photo-label">portret oficjalny</span>
+                    </div>
+                    <div class="about-text">
+                    <p>
+                        <strong>Binky</strong> To nie jest zwykły kot. To prawdziwa bestia, która została zabrana od matki z Krościenka nad Dunajcem. Od najmłodszych lat była inna niż jej rodzeństwo, mniejsza i słabsza. Później zaczeła dojrzewać, jednak nie przeszkodziło jej to zostać prawdziwym "destroyerem".
+                    </p>
+                    <p>
+                        Jej specjalność to domaganie się atencji poprzez różne formy niszczenia mieszkania właścicieli. Niezależnie od tego, czy jest to przewracanie doniczek, drapanie mebli czy telewizora. Binky zawsze dostaje to co chce. 
+                    </p>
+                    <p>
+                        Mimo wszystko, Binky jest kochana przez swoich właścicieli i od 3 lat jest nieodłączną częścia ich życia.  
+                    </p>
+                    <ul class="stats-list">
+                        <li><span class="stat-key">Imie:</span> Binky</li>
+                        <li><span class="stat-key">Wiek:</span> 3 lata</li>
+                        <li><span class="stat-key">Rasa:</span> Smietnikowy</li>
+                        <li><span class="stat-key">Kolor:</span> Szaro-biały</li>
+                        <li><span class="stat-key">Ulubione zajęcia:</span> Niszczenie, jedzenie, drapanie, spanie</li>
+                        <li><span class="stat-key">Największe osiągnięcie:</span> Doprowadzenie do szału włascicielki 3 razy w ciągu jednego dnia</li>
+                        <li><span class="stat-key">Ulubiona zabawka:</span> Pudełko po żwirku</li>
+                        <li><span class="stat-key">Ulubione miejsce do spania:</span> Koszyczek na szafie</li>
+                        <li><span class="stat-key">Poziom zagrożenia:</span> Bardzo wysoki</li>
+                    </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="gallery">
+                <p class="section-label">// gallery </p>
+                <h2 class="section-title">galeria</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <div class="gallery-img"><img src="https://mateuszkocanda1-droid.github.io/binky-destroyer/binky-5.jpg" alt="Binky śpi" style="width:100%; height:100%; object-fit:cover;"></div>
+                        <div class="gallery-caption">
+                            <strong>Tryb uśpenia</strong>
+                            Binky po jedzenu. 
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-img"><img src="https://mateuszkocanda1-droid.github.io/binky-destroyer/binky-1.jpg" alt="Binky niszcząca" style="width:100%; height:100%; object-fit:cover;"></div>
+                        <div class="gallery-caption">
+                            <strong>Tryb zniszczenia</strong>
+                            Binky w trakcie niszczenia mieszkania. 
+                        </div>
+                    </div>
+                
+                     <div class="gallery-card">
+                        <div class="gallery-img"><img src="https://mateuszkocanda1-droid.github.io/binky-destroyer/binky-3.jpg" alt="Binky domagająca się atencji" style="width:100%; height:100%; object-fit:cover;"></div>
+                        <div class="gallery-caption">
+                            <strong>Tryb atencji</strong>
+                             Binky domagająca się atencji. 
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="destruction">
+                <p class="section-label">// destruction </p>
+                <h2 class="section-title">hall of destruction</h2>
+                <ul class="destruction-list">
+                    <li class="destruction-item">
+                        <div class="destruction-icon"><i class="fa-solid fa-seedling"></i></div>
+                        <div>
+                            <div class="destruction-name">Kwiatek na parapecie</div>
+                            <div class="destruction-desc">Zrzucony z premedytacją na podłoge w celu uzyskania atencji</div>
+                        </div>
+                        <span class="destruction-badge badge-rip">RIP</span>
+                    </li>
+                    <li class="destruction-item">
+                        <div class="destruction-icon"><i class="fa-solid fa-toilet-paper"></i></div>
+                        <div>
+                            <div class="destruction-name">Rolka papieru toaletowego</div>
+                            <div class="destruction-desc">Rozwinięta w całości w łazience</div>
+                        </div>
+                        <span class="destruction-badge badge-rip">RIP</span>
+                    </li>
+                    <li class="destruction-item">
+                        <div class="destruction-icon"><i class="fa-solid fa-couch"></i></div>
+                        <div>
+                            <div class="destruction-name">Kanapa</div>
+                            <div class="destruction-desc">W trakcie niszczenia</div>
+                        </div>
+                        <span class="destruction-badge badge-rip">RIP</span>
+                    </li>
+                    <li class="destruction-item">
+                        <div class="destruction-icon"><i class="fa-solid fa-plug"></i></div>
+                        <div>
+                            <div class="destruction-name">Ładowarka</div>
+                            <div class="destruction-desc">Tego najbardziej szczerze szkoda</div>
+                        </div>
+                        <span class="destruction-badge badge-rip">RIP</span>
+                    </li>
+                    <li class="destruction-item">
+                        <div class="destruction-icon"><i class="fa-solid fa-tshirt"></i></div>
+                        <div>
+                            <div class="destruction-name">Koszulka</div>
+                            <div class="destruction-desc">Zielona koszulka właściciela już nigdy nie zostanie ubrana</div>
+                        </div>
+                        <span class="destruction-badge badge-rip">RIP</span>
+                    </li>
+                    <li class="destruction-item">
+                        <div class="destruction-icon"><i class="fa-solid fa-trash-can"></i></div>
+                        <div>
+                            <div class="destruction-name">Opakowanie żwirku</div>
+                            <div class="destruction-desc">Sama chciała baaaardzooo otworzyć</div>
+                        </div>
+                        <span class="destruction-badge badge-rip">RIP</span>
+                    </li>
+                </ul>
+            </section>
+    </main>
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-cat"><i class="fa-solid fa-cat"></i></span>
+            <span class="footer-namer">Binky Destroyer </span>
+            <span class="footer-text"><i class="fa-regular fa-copyright"></i> 2023 Binky Destroyer. All rights reserved.</span>
+        </div>
+    </footer>
+    <script>
+        const ripItems = document.querySelectorAll('.badge-rip');
+        const count = ripItems.length;
+        const counter = document.createElement('p');
+        counter.innerHTML = '<i class="fa-solid fa-skull"></i> Łączna liczba ofiar: ' + count;
+        counter.style.fontFamily = "'Space Mono', monospace";
+        counter.style.fontSize = '0.85rem';
+        counter.style.color = 'var(--purple)';
+        counter.style.marginTop = '24px';
+        counter.style.fontWeight = '700';
+        document.querySelector('.destruction-list').after(counter);
+    </script>
+</body>
+</html>
